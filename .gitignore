@@ -1,0 +1,38 @@
+
+# Secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.venv/
+env/
+
+# Django
+*.log
+local_settings.py
+media/
+staticfiles/
+
+# Local databases and backups
+*.sqlite3
+*.sqlite3-*
+*.db
+db_backup*
+ap_backup*
+
+# React and Node
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
