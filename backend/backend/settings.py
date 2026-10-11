@@ -6,8 +6,6 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Load local .env for development.
-# Render environment variables take precedence over .env values.
 load_dotenv(BASE_DIR / ".env", override=False)
 
 # SECURITY
@@ -18,12 +16,9 @@ if not SECRET_KEY:
 DEBUG = os.getenv("DJANGO_DEBUG", "False").lower() == "true"
 
 ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.getenv(
-        "DJANGO_ALLOWED_HOSTS",
-        "localhost,127.0.0.1,jalmart-ecommerce-2.onrender.com",
-    ).split(",")
-    if host.strip()
+    "jalmart-ecommerce-2.onrender.com",
+    "localhost",
+    "127.0.0.1",
 ]
 
 # APPLICATIONS
@@ -160,6 +155,7 @@ CORS_ALLOWED_ORIGINS = [
     ).split(",")
     if origin.strip()
 ]
+
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
