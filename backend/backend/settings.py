@@ -4,22 +4,24 @@ from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
 
-load_dotenv()
-
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load local .env for development.
+# Render environment variables take precedence over .env values.
+load_dotenv(BASE_DIR / ".env", override=False)
 
 # SECURITY
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 if not SECRET_KEY:
     raise RuntimeError("DJANGO_SECRET_KEY is missing.")
 
-DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() == "true"
+DEBUG = os.getenv("DJANGO_DEBUG", "False").lower() == "true"
 
 ALLOWED_HOSTS = [
     host.strip()
     for host in os.getenv(
         "DJANGO_ALLOWED_HOSTS",
-        "localhost,127.0.0.1",
+        "localhost,127.0.0.1,jalmart-ecommerce-2.onrender.com",
     ).split(",")
     if host.strip()
 ]
